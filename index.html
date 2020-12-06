@@ -1,0 +1,92 @@
+<!DOCTYPE html5>
+<html>
+
+<style>
+    h1::before {
+        transform: scaleX(0);
+        transform-origin: bottom right;
+    }
+
+    h1:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    h1::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        inset: 0 0 0 0;
+        background: hsl(200 100% 80%);
+        z-index: -1;
+        transition: transform .3s ease;
+    }
+
+    h1 {
+        position: relative;
+        font-size: 4rem;
+    }
+
+    table {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    table tr {
+        background-color: lightblue;
+        border: 1px solid #ddd;
+        padding: .35em;
+    }
+
+    table th,
+    table td {
+        padding: .625em;
+        text-align: center;
+    }
+
+    table th {
+        font-size: .85em;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+</style>
+
+<body>
+
+    <h1> Jugendliche auf Instagram finden! </h1>
+    <div>
+        <table>
+            <caption class="text-center">Collection of info</caption>
+            <thead>
+                <tr>
+                    <th>Profilbild</th>
+                    <th>Username</th>
+                    <th>Bio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{# users }}
+
+                <tr>
+                    <td><img src="{{ profileImage }}" /></td>
+                    <td>{{ name }}</td>
+                    <td>@{{ screenName }}</td>
+                </tr>
+                {{/ users }}
+
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+</html>
